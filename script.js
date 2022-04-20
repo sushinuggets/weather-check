@@ -1,5 +1,3 @@
-import "./styles.css";
-
 //format date function
 function formatDate(date) {
   let year = date.getFullYear();
