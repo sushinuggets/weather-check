@@ -138,5 +138,9 @@ function locateUser(response) {
   axios.get(api).then(changeWeather);
 }
 
+function startGeolocation() {
+  navigator.geolocation.getCurrentPosition(locateUser);
+}
+
 let geolocationBtn = document.getElementById("geolocation");
-geolocationBtn.onclick = navigator.geolocation.getCurrentPosition(locateUser);
+geolocationBtn.addEventListener("click", startGeolocation);
