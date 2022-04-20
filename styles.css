@@ -1,0 +1,91 @@
+body {
+  font-family: sans-serif;
+  background-image: url("/backgrounds/partly-cloudy-bg.jpg");
+  background-size: 1200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Acme", sans-serif;
+}
+h1 {
+  font-family: "Acme", sans-serif;
+}
+#geolocation {
+  border-radius: 10px;
+  transition: all 100ms ease-in-out;
+}
+
+#geolocation:hover {
+  background-color: rgba(25, 52, 209, 0.5);
+  color: rgb(255, 255, 255);
+}
+.current-info h3 {
+  font-size: 30px;
+  text-transform: capitalize;
+}
+.current-info {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.weather-stats {
+  text-align: left;
+  font-size: 15px;
+  padding-top: 15px;
+}
+
+#weather-icon {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.future-forecast {
+  font-size: 20px;
+  font-weight: 900;
+  color: rgb(49, 93, 224);
+  padding-top: 10px;
+}
+
+.card {
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.signature {
+  text-align: center;
+  padding: 0 15px;
+  color: rgb(255, 255, 255);
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+}
+#attribute {
+  font-size: 10px;
+}
+.future-temp {
+  font-size: 35px;
+  text-align: left;
+  display: inline-block;
+}
+.future-date {
+  font-size: 15px;
+  text-align: right;
+  display: inline-block;
+}
+
+.future-icon li {
+  list-style: none;
+  text-align: center;
+}
+
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.dropdown-item {
+  transition: all 150ms ease-in-out;
+}
+.dropdown-item:hover {
+  background-color: rgb(223, 168, 234);
+}
