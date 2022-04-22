@@ -30,16 +30,16 @@
     <div class="container my-3 mx-auto">
       <div class=" row header">
         <div class="col title">
-        <h1>Weather Check</h1> 
-        <span><button id="geolocation" class="m-1">Get your Current Location</button></span>
-        </br>
+        <h1>Weather Check</h1>
         <button type="button" class="btn btn-secondary btn-sm" id="date-btn">
             <i class="fi fi-sr-rotate-right" id="refreshBtn"></i>
             </button><span id="date-time" class="p-2"></span>
       </div>
        
-      <div class="col-4 search-bar">
+      <div class="col-6 search-bar">
+          
           <form>
+            <button id="geolocation" class="btn btn-secondary btn-sm"><i class="fi fi-rr-marker"></i></button>
             <input
               type="search-bar"
               name="city-search"
@@ -59,13 +59,14 @@
             <label for="fahrenheit-radio">Fahrenheit</label>
           </form>
         </div>
-        <div class="col-2 menuBtn">
-          <div class="btn-group dropend">
+        <div class="col-1 menuBtn">
+          <div class="btn-group dropleft">
             <button
              type="button"
              class="btn btn-secondary btn-sm dropdown-toggle" 
              id="menuBtn" 
-             data-bs-toggle="dropdown">
+             data-bs-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
              <i class="fi fi-sr-menu-burger"></i>
          </button>
                <ul class="dropdown-menu">
