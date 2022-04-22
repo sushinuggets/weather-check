@@ -11,6 +11,11 @@ body {
 h1 {
   font-family: "Acme", sans-serif;
 }
+
+ul li {
+  list-style: none;
+}
+
 #geolocation {
   border-radius: 10px;
   transition: all 100ms ease-in-out;
@@ -37,7 +42,7 @@ h1 {
 }
 
 #weather-icon {
-  width: 80%;
+  width: 65%;
   margin: 10px auto;
 }
 
