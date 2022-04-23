@@ -53,19 +53,53 @@ celciusRadio.onclick = function convertCelcius() {
   temperature = parseInt(temperature);
   temperature = Math.round(((temperature - 32) * 5) / 9);
 
-  let newTemp = document.getElementById("current-temp");
-  newTemp.innerHTML = temperature;
+  let highTemp = document.getElementById("high-temp").innerHTML;
+  let lowTemp = document.getElementById("low-temp").innerHTML;
+  let realFeelTemp = document.getElementById("real-feel").innerHTML;
+  highTemp = parseInt(highTemp);
+  lowTemp = parseInt(lowTemp);
+  realFeelTemp = parseInt(realFeelTemp);
+
+  highTemp = Math.round(((highTemp - 32) * 5) / 9);
+  lowTemp = Math.round(((lowTemp - 32) * 5) / 9);
+  realFeelTemp = Math.round(((realFeelTemp - 32) * 5) / 9);
+
   let unit = document.querySelector(".temp-unit");
   unit.innerHTML = "°C";
+  let newTemp = document.getElementById("current-temp");
+  newTemp.innerHTML = temperature;
+  let newHigh = document.getElementById("high-temp");
+  newHigh.innerHTML = `${highTemp}°`;
+  let newLow = document.getElementById("low-temp");
+  newLow.innerHTML = `${lowTemp}°`;
+  let newRealFeel = document.getElementById("real-feel");
+  newRealFeel.innerHTML = `${realFeelTemp}°`;
 };
 // function to convert to F when radio button clicked
 let fahrenheitRadio = document.getElementById("fahrenheit-radio");
 
 fahrenheitRadio.onclick = function convertFahreinheit() {
   let temperature = document.getElementById("current-temp").innerHTML;
-  temperature = parseInt(temperature, 10);
+  temperature = parseInt(temperature);
   temperature = Math.round((temperature * 9) / 5 + 32);
 
+  let highTemp = document.getElementById("high-temp").innerHTML;
+  let lowTemp = document.getElementById("low-temp").innerHTML;
+  let realFeelTemp = document.getElementById("real-feel").innerHTML;
+  highTemp = parseInt(highTemp);
+  lowTemp = parseInt(lowTemp);
+  realFeelTemp = parseInt(realFeelTemp);
+
+  highTemp = Math.round((highTemp * 9) / 5 + 32);
+  lowTemp = Math.round((lowTemp * 9) / 5 + 32);
+  realFeelTemp = Math.round((realFeelTemp * 9) / 5 + 32);
+
+  let newHigh = document.getElementById("high-temp");
+  newHigh.innerHTML = `${highTemp}°`;
+  let newLow = document.getElementById("low-temp");
+  newLow.innerHTML = `${lowTemp}°`;
+  let newRealFeel = document.getElementById("real-feel");
+  newRealFeel.innerHTML = `${realFeelTemp}°`;
   let newTemp = document.getElementById("current-temp");
   newTemp.innerHTML = temperature;
   let unit = document.querySelector(".temp-unit");
