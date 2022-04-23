@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  background-image: url("../backgrounds/partly-cloudy-bg.jpg");
+  background-image: url("../backgrounds/clear-bg.jpg");
   background-size: 1200px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -16,6 +16,17 @@ ul li {
   list-style: none;
 }
 
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  padding: 10px;
+}
 #geolocation:hover {
   background-color: rgba(25, 52, 209, 0.5);
   color: rgb(255, 255, 255);
@@ -57,12 +68,10 @@ ul li {
 .signature {
   text-align: center;
   padding: 0 15px;
-  color: rgb(255, 255, 255);
-  font-family: "Roboto", sans-serif;
-  font-size: 10px;
 }
 #attribute {
-  font-size: 10px;
+  text-align: right;
+  padding: 10px;
 }
 .future-temp {
   font-size: 25px;
