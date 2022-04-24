@@ -27,10 +27,7 @@ footer {
   font-size: 10px;
   padding: 10px;
 }
-#geolocation:hover {
-  background-color: rgba(25, 52, 209, 0.5);
-  color: rgb(255, 255, 255);
-}
+
 .current-info h3 {
   font-size: 30px;
   text-transform: capitalize;
