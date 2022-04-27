@@ -45,17 +45,13 @@ dateBtn.addEventListener("click", changeDate);
 let currentDate = document.getElementById("date-time");
 currentDate.innerHTML = formatDate(new Date());
 
-
 let fahrenheitRadio = document.getElementById("fahrenheit-radio");
 let celciusRadio = document.getElementById("celcius-radio");
 
 celciusRadio.onclick = function convertCelcius() {
   let units = "metric";
-  let city = document.getElementById("city-search").value;
+  let city = document.getElementById("current-city").innerHTML;
   city.trim();
-  let degrees = document.querySelector(".temp-unit");
-  degrees.innerHTML = "°C";
-  windUnits = "km/h";
 
   let apiKey = "77897962aee35dda8ee05a81adbd8139";
   let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
@@ -65,11 +61,8 @@ celciusRadio.onclick = function convertCelcius() {
 
 fahrenheitRadio.onclick = function convertFahreinheit() {
   let units = "Imperial";
-  let city = document.getElementById("city-search").value;
+  let city = document.getElementById("current-city").innerHTML;
   city.trim();
-  let degrees = document.querySelector(".temp-unit");
-  degrees.innerHTML = "°F";
-  windUnits = "mph";
 
   let apiKey = "77897962aee35dda8ee05a81adbd8139";
   let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
@@ -79,7 +72,6 @@ fahrenheitRadio.onclick = function convertFahreinheit() {
 
 // Search Engine
 function changeWeather(response) {
-  console.log(response);
   let cityName = response.data.name;
   let temp = Math.round(response.data.main.temp);
   let high = Math.round(response.data.main.temp_max);
@@ -88,6 +80,16 @@ function changeWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let realFeel = Math.round(response.data.main.feels_like);
   let conditions = response.data.weather[0].description;
+  let degrees = document.querySelector(".temp-unit");
+
+  if (celciusRadio.checked) {
+    windUnits = "km/h";
+
+    degrees.innerHTML = "°C";
+  } else {
+    windUnits = "mph";
+    degrees.innerHTML = "°F";
+  }
 
   let newCity = document.querySelector(".city-name");
   newCity.innerHTML = cityName;
@@ -104,7 +106,7 @@ function changeWeather(response) {
   let newReal = document.getElementById("real-feel");
   newReal.innerHTML = ` ${realFeel}°`;
   let newWind = document.getElementById("wind-speed");
-  newWind.innerHTML = `${windSpeed} ${windUnits}`;
+  newWind.innerHTML = ` ${windSpeed} ${windUnits}`;
 
   //change current weather icon
   let icon = document.querySelector("#weather-icon");
@@ -154,7 +156,7 @@ function changeWeather(response) {
         "style",
         "background-image: url('./backgrounds/clear-bg.jpg');"
       );
-      headerText.setAttribute("style", "color: #FFFFFF");
+      headerText.setAttribute("style", "color: #000000");
       break;
     case "mist":
       icon.setAttribute("src", "./weather-images/mist.png");
@@ -170,7 +172,7 @@ function changeWeather(response) {
         "style",
         "background-image: url('./backgrounds/tornado-bg.jpg');"
       );
-      headerText.setAttribute("style", "color: #FFFFFF");
+      headerText.setAttribute("style", "color: #000000");
       break;
     case "dust":
       icon.setAttribute("src", "./weather-images/dust.png");
