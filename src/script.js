@@ -33,6 +33,15 @@ function formatDate(date) {
   let dateTime = `${weekday}, ${month} ${day}, ${year} ${hour}:${minutes}:${seconds}`;
   return dateTime;
 }
+let forecastDate;
+
+function formatTimestamp(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let weekday = date.getDay(days);
+  forecastDate = date.getDate(timestamp * 1000);
+  return days[weekday];
+}
 
 function changeDate() {
   document.getElementById("date-time").innerHTML = formatDate(new Date());
@@ -69,6 +78,86 @@ fahrenheitRadio.onclick = function convertFahreinheit() {
 
   axios.get(api).then(changeWeather);
 };
+//Pull forecast Dtata from API
+function getForecast(coordinates) {
+  let units;
+  if (celciusRadio.checked) {
+    units = "metric";
+  } else {
+    units = "imperial";
+  }
+
+  let apiKey = "77897962aee35dda8ee05a81adbd8139";
+  let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=alerts,hourly,minutely&appid=${apiKey}&units=${units}`;
+
+  axios.get(api).then(displayForecast);
+}
+
+//function  to display forecast
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.getElementById("forecast");
+
+  forecast.splice(0, 1); //removes first object to start forcast with "tomorrow"
+
+  let forecastHTML = `<div class = "row ">`;
+  forecast.forEach(function (dayObject, index) {
+    let weatherCondition = dayObject.weather[0].main;
+    let icon = weatherCondition.toLowerCase();
+    let description;
+    let temp = Math.round(dayObject.temp.max);
+    if (icon === "clouds") {
+      description = dayObject.weather[0].description;
+      if (description === "few clouds" || description === "scattered clouds") {
+        icon = "few-clouds";
+      } else if (description === "broken clouds") {
+        icon = "partly-cloudy";
+      } else {
+        icon = "cloudy";
+      }
+    }
+    if (icon === "sand" || icon === "ash" || icon === "smoke") {
+      icon = "dust";
+    }
+    if (icon === "haze" || icon === "fog" || icon === "squall") {
+      icon = "mist";
+    }
+    let iconLink = `weather-images/${icon}.png`;
+
+    if (index < 5) {
+      //gets only 5 days
+      forecastHTML =
+        forecastHTML +
+        `<div class="card col-2 d-flex mx-auto">
+          <div class="card-body">
+           <div class="row card-info">
+             <span class=" col future-temp" id="temp">${temp}°</span>
+             <span class ="col float-end " id="date">${formatTimestamp(
+               dayObject.dt
+             )}
+               <br />
+               ${forecastDate}
+               </span>
+           </div> 
+          <div class="row future-icon">
+            <div class="col w-100" >
+                <li>
+                    <img class="icon" 
+                  src="${iconLink}" 
+                  alt="${weatherCondition}" 
+                  width="70px">
+                </img>
+              </li>    
+         </div>
+         </div>
+          </div>
+        </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 // Search Engine
 function changeWeather(response) {
@@ -108,6 +197,8 @@ function changeWeather(response) {
   let newWind = document.getElementById("wind-speed");
   newWind.innerHTML = ` ${windSpeed} ${windUnits}`;
 
+  getForecast(response.data.coord);
+
   //change current weather icon
   let icon = document.querySelector("#weather-icon");
   let weatherCondition = response.data.weather[0].main.toLowerCase();
@@ -127,7 +218,6 @@ function changeWeather(response) {
         "background-image: url('./backgrounds/thunderstorm-bg.jpg')"
       );
       headerText.setAttribute("style", "color: #FFFFFF");
-      break;
       break;
     case "drizzle":
       icon.setAttribute("src", "./weather-images/drizzle.png");

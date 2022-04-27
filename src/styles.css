@@ -63,12 +63,12 @@ footer {
 }
 
 .signature {
-  text-align: center;
+  text-align: left;
   padding: 0 15px;
 }
 #attribute {
   text-align: right;
-  padding: 10px;
+  padding: 0 15px;
 }
 .future-temp {
   font-size: 25px;
