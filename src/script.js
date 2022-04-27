@@ -114,11 +114,14 @@ function changeWeather(response) {
   let description = response.data.weather[0].description;
   let backgroundImg = document.querySelector(".background");
   let headerText = document.querySelector(".header");
+  let attributeLink = document.querySelector("#attribute");
 
   switch (weatherCondition) {
     case "thunderstorm":
       icon.setAttribute("src", "./weather-images/thunderstorm.png");
       icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@jplenio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Johannes Plenio";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/thunderstorm-bg.jpg')"
@@ -128,6 +131,10 @@ function changeWeather(response) {
       break;
     case "drizzle":
       icon.setAttribute("src", "./weather-images/drizzle.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@livvie_bruce?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Liv Bruce";
+
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/rain-bg.jpg')"
@@ -136,6 +143,10 @@ function changeWeather(response) {
       break;
     case "rain":
       icon.setAttribute("src", "./weather-images/rain.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@livvie_bruce?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Liv Bruce";
+
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/rain-bg.jpg');"
@@ -144,6 +155,10 @@ function changeWeather(response) {
       break;
     case "snow":
       icon.setAttribute("src", "./weather-images/snow.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@nickartman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Nick Artman";
+
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/snow-bg.jpg')"
@@ -152,6 +167,9 @@ function changeWeather(response) {
       break;
     case "clear":
       icon.setAttribute("src", "./weather-images/clear.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@erikvandijk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Erik van Dijk";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/clear-bg.jpg');"
@@ -160,14 +178,31 @@ function changeWeather(response) {
       break;
     case "mist":
       icon.setAttribute("src", "./weather-images/mist.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@marinareich?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Marina Reich";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/mist-bg.jpg');"
       );
       headerText.setAttribute("style", "color: #000000");
       break;
+    case "fog":
+      icon.setAttribute("src", "./weather-images/mist.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@sickle?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Sergey Pesterev";
+      backgroundImg.setAttribute(
+        "style",
+        "background-image: url('./backgrounds/fog-bg.jpg');"
+      );
+      headerText.setAttribute("style", "color: #000000");
+      break;
     case "tornado":
       icon.setAttribute("src", "./weather-images/tornado.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@espenbi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Espen Bierud";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/tornado-bg.jpg');"
@@ -176,6 +211,9 @@ function changeWeather(response) {
       break;
     case "dust":
       icon.setAttribute("src", "./weather-images/dust.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@jeremybishop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Jeremy Bishop";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/dust-bg.jpg');"
@@ -184,6 +222,9 @@ function changeWeather(response) {
       break;
     case "sand":
       icon.setAttribute("src", "./weather-images/dust.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@jeremybishop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Jeremy Bishop";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/dust-bg.jpg');"
@@ -192,6 +233,9 @@ function changeWeather(response) {
       break;
     case "ash":
       icon.setAttribute("src", "./weather-images/dust.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@jeremybishop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Jeremy Bishop";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/dust-bg.jpg');"
@@ -201,18 +245,27 @@ function changeWeather(response) {
     case "clouds":
       if (description === "few clouds" || description === "scattered clouds") {
         icon.setAttribute("src", "./weather-images/few-clouds.png");
+        icon.setAttribute("alt", "weatherCondition");
+        attributeLink.innerHTML =
+          "Photo by <a href='https://unsplash.com/@nedaastani?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Neda Astani";
         backgroundImg.setAttribute(
           "style",
           "background-image: url('./backgrounds/partly-cloudy-bg.jpg');"
         );
       } else if (description === "overcast clouds") {
         icon.setAttribute("src", "./weather-images/cloudy.png");
+        icon.setAttribute("alt", "weatherCondition");
+        attributeLink.innerHTML =
+          "Photo by <a href='https://unsplash.com/@lukaszlada?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Łukasz Łada";
         backgroundImg.setAttribute(
           "style",
           "background-image: url('./backgrounds/cloudy-bg.jpg');"
         );
       } else {
         icon.setAttribute("src", "./weather-images/partly-cloudy.png");
+        icon.setAttribute("alt", "weatherCondition");
+        attributeLink.innerHTML =
+          "Photo by <a href='https://unsplash.com/@nedaastani?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Neda Astani";
         backgroundImg.setAttribute(
           "style",
           "background-image: url('./backgrounds/partly-cloudy-bg.jpg');"
@@ -221,6 +274,9 @@ function changeWeather(response) {
       break;
     default:
       icon.setAttribute("src", "./weather-images/mist.png");
+      icon.setAttribute("alt", "weatherCondition");
+      attributeLink.innerHTML =
+        "Photo by <a href='https://unsplash.com/@marinareich?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText' target='_blank'>Marina Reich";
       backgroundImg.setAttribute(
         "style",
         "background-image: url('./backgrounds/mist-bg.jpg');"
