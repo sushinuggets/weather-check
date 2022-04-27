@@ -381,7 +381,7 @@ searchBtn.onclick = function searchCity(event) {
   event.preventDefault();
   let city = document.getElementById("city-search").value;
   city.trim();
-
+  console.log(city);
   if (celciusRadio.checked) {
     units = "metric";
   } else {
@@ -418,3 +418,17 @@ let units;
 let windUnits;
 let geolocationBtn = document.getElementById("geolocation");
 geolocationBtn.addEventListener("click", startGeolocation);
+
+function search(city) {
+  if (celciusRadio.checked) {
+    units = "metric";
+  } else {
+    units = "imperial";
+  }
+  let apiKey = "77897962aee35dda8ee05a81adbd8139";
+  let api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+  axios.get(api).then(changeWeather);
+}
+
+search("Philadelphia");

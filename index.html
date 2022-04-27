@@ -21,7 +21,11 @@
       rel="stylesheet"
       href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
     />
-    
+    <link 
+      rel='stylesheet' 
+      href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'
+    />
+
     <link rel="stylesheet" href="src/styles.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
@@ -39,7 +43,7 @@
       <div class="col-6 search-bar">
           
           <form class="header">
-            <button id="geolocation" class="btn btn-secondary btn-sm"><i class="fi fi-rr-marker"></i></button>
+            
             <input
               type="search-bar"
               name="city-search"
@@ -54,50 +58,40 @@
               <br />
 
             <input type="radio" name="degrees" id="celcius-radio" checked />
-            <label for="celcius-radio">Celcius</label>
+            <label for="celcius-radio">Celsius</label>
             <input type="radio" name="degrees" id="fahrenheit-radio"  />
             <label for="fahrenheit-radio">Fahrenheit</label>
           </form>
         </div>
         <div class="col-1 menuBtn">
           <div class="btn-group dropleft">
-            <button
-             type="button"
-             class="btn btn-secondary btn-sm dropdown-toggle" 
-             id="menuBtn" 
-             data-bs-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-             <i class="fi fi-sr-menu-burger"></i>
-         </button>
-               <ul class="dropdown-menu">
-                 <li><a class="dropdown-item" href="#">Paris</a></li>
-                 <li><a class="dropdown-item" href="#">Lisbon</a></li>
-                 <li><a class="dropdown-item" href="#">San Francisco</a></li>
-                 <li><a class="dropdown-item" href="#">Busan</a></li> 
-               </ul>
-             </div>
+            <button id="geolocation" class="btn btn-secondary btn-sm">
+              <i class="fi fi-rr-marker"></i>
+            </button>
+          </div>
         </div>
       </div>
       <section class="current-info container p-3 rounded">
         <div class="row">
           <div class="col city-info">
-            <h3 class="city-name m-0" id="current-city">Philadelphia</h3>
-            <p class="country mt-0 "></p>
+           <h3 class="city-name my-4" id="current-city"></h3>
+            
             <div class="weather-stats">
               <ul>
-                <li>Humidity: <span id="humidity">3%</span></li>
-                <li>Wind Speed:<span id="wind-speed"> 6 km/h</span></li>
-                <li>Real Feel: <span id="real-feel">18°</span></li>
+                <li>Humidity: <span id="humidity"></span></li>
+                <li>Wind Speed:<span id="wind-speed">/span></li>
+                <li>Real Feel: <span id="real-feel"></span></li>
             </ul>
           </div>
           </div>
           <div class="col" >
             <img id="weather-icon" class="rounded mx-auto d-block" src="weather-images/partly-cloudy.png" alt="Partly Cloudy">
           </div>
-          <div class="col current-weather">
-            <h3 id="weather-condition">Partly Cloudy</h3>
-              <span id="current-temp">22</span><span class="temp-unit">°C</span>
-              <p class="temp-range"> <span id="high-temp">23°</span> | <span id="low-temp">16°</span></p>
+          <div class="col current-weather mx-auto">
+            <h3  class="my-4"id="weather-condition"></h3>
+            <br />
+              <span id="current-temp"></span><span class="temp-unit" id="temp-unit"></span>
+              <p class="temp-range"> <span id="high-temp"></span> | <span id="low-temp"></span></p>
           </div>
         </div>
       </section>
